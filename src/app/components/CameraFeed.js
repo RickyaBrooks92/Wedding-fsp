@@ -1,31 +1,29 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+
+const getCamera = async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    if (videoRef.current) {
+      videoRef.current.srcObject = stream;
+      videoRef.current.onloadedmetadata = () => videoRef.current.play();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const CameraFeed = () => {
-  const getCamera = async () => {
-    try {
-      await navigator.mediaDevices
-        .getUserMedia({
-          video: true,
-        })
-        .then((stream) => {
-          const video = document.querySelector("video");
-          video.srcObject = stream;
-          video.onloadedmetadata = (e) => video.play();
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    getCamera();
-  }, []);
+    if (videoRef.current) getCamera();
+  }, [videoRef]);
 
   return (
     <div>
-      <video id="camera-box" muted>
+      <video ref={videoRef} id="camera-box" muted>
         {" "}
       </video>
     </div>
