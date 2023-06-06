@@ -19,7 +19,7 @@ const CameraFeed = () => {
 
   useEffect(() => {
     if (videoRef.current) getCamera();
-  }, [videoRef]);
+  }, [videoRef.current]);
 
   return (
     <div>
