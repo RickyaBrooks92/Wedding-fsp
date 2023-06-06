@@ -1,22 +1,22 @@
 /* Global styles */
 
 /* Add this to your style sheet */
-/* 
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
-} */
+}
 
-/* #camera-box { */
-/* width: 100%;
+#camera-box {
+  width: 100%;
   height: 100%;
   object-fit: none;
   background-color: black;
   position: absolute;
-  transform: rotateY(180deg); */
-/* -webkit-transform: rotateY(180deg); Safari and Chrome */
-/* -moz-transform: rotateY(180deg); Firefox */
-/* } */
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+  -moz-transform: rotateY(180deg); /* Firefox */
+}
