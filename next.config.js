@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const { withPlausibleProxy } = require("next-plausible");
+const withPlugins = require("next-compose-plugins");
 
-module.exports = nextConfig
+const nextConfig = {};
+
+module.exports = withPlugins([withPlausibleProxy()], nextConfig);
