@@ -1,5 +1,6 @@
 "use client";
 
+import { get } from "http";
 import React, { useEffect } from "react";
 
 const CameraFeed = () => {
@@ -14,12 +15,18 @@ const CameraFeed = () => {
     }
   };
 
+  const startVideo = () => {
+    const video = document.querySelector("video");
+    video.play();
+  };
+
   useEffect(() => {
     getCamera();
   }, []);
 
   return (
     <div>
+      <button onClick={startVideo}>Start Video</button>
       <video id="camera-box"> </video>
     </div>
   );
