@@ -1,23 +1,22 @@
 "use client";
 
-import { get } from "http";
 import React, { useEffect } from "react";
 
 const CameraFeed = () => {
   const getCamera = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      const video = document.querySelector("video");
-      video.srcObject = stream;
-      video.onloadedmetadata = () => video.play();
+      await navigator.mediaDevices
+        .getUserMedia({
+          video: true,
+        })
+        .then((stream) => {
+          const video = document.querySelector("video");
+          video.srcObject = stream;
+          video.onloadedmetadata = (e) => video.play();
+        });
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const startVideo = () => {
-    const video = document.querySelector("video");
-    video.play();
   };
 
   useEffect(() => {
@@ -26,8 +25,9 @@ const CameraFeed = () => {
 
   return (
     <div>
-      <button onClick={startVideo}>Start Video</button>
-      <video id="camera-box"> </video>
+      <video id="camera-box" muted>
+        {" "}
+      </video>
     </div>
   );
 };
